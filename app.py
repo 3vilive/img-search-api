@@ -1,5 +1,4 @@
 # coding: utf-8
-# FLASK_ENV=development FLASK_APP=dup_image_api flask run
 
 import io
 import dhash
@@ -106,10 +105,10 @@ class BinaryFlatIndex(object):
         dis, index = self.faiss_index.search(np.array([vec]), k=k)
         results = []
 
-        for offset, _ in enumerate(index):
+        for offset, _ in enumerate(index[0]):
             results.append(SearchResult(
-                dis=dis[offset][0],
-                idx=index[offset][0],
+                dis=dis[0][offset],
+                idx=index[0][offset],
             ))
 
         return results
